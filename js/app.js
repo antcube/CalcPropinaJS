@@ -72,7 +72,7 @@ function mostrarSecciones() {
 // Función para obtener platillos de la API
 function obtenerPlatillos() {
     // Punto final de la API
-    const url = 'http://localhost:4000/platillos';
+    const url = 'http://localhost:4000/platillos' || './db.json';
 
     // Obtiene datos de la API
     fetch(url)
@@ -116,6 +116,10 @@ function mostrarPlatillos(platillos) {
         // Crea y configura un elemento de entrada para la cantidad de platillos a agregar
         const form = document.createElement('FORM');
         form.classList.add('col-md-2');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevenir el comportamiento predeterminado del evento de envío del formulario.
+        });
 
         const inputEl = document.createElement('INPUT');
         inputEl.type = 'number';
@@ -345,7 +349,7 @@ function formularioPropinas() {
 
     // Crear un contenedor para el formulario de propinas
     const Divformulario = document.createElement('DIV');
-    Divformulario.classList.add('col-md-6', 'formulario');
+    Divformulario.classList.add('col-md-6', 'mt-3', 'mt-md-0', 'formulario');
     
     // Crear el formulario de propinas
     const formulario = document.createElement('DIV');
@@ -354,7 +358,7 @@ function formularioPropinas() {
     // Heading
     const heading = document.createElement('H3');
     heading.classList.add('my-4', 'text-center');
-    heading.textContent = 'Propina: ';
+    heading.textContent = 'Propina';
 
     // 5%
     const radio5Div = document.createElement('DIV');
@@ -449,7 +453,7 @@ function calcularPropina() {
 function mostrarTotalHTML(subtotal, propina, total) {
     // Crear un contenedor para mostrar los totales
     const divTotales = document.createElement('DIV');
-    divTotales.classList.add('total-pagar', 'my-5');
+    divTotales.classList.add('total-pagar', 'my-3');
 
     // Crear elemento para mostrar el subtotal
     const subtotalParrafo = document.createElement('P');
